@@ -6722,6 +6722,13 @@ local v112 = {};
 for v308, v309 in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(v112, v309.Name);
 end
+v16.Home:AddButton({
+    Title = "Auto Bounty"
+    Description = "null"
+    Callback = function()
+        setclipboard("null");
+end
+});
 local v56 = v16.Player:AddSection("Khác");
 local v115 = v16.Player:AddToggle("ToggleNoClip", {
     Title = "Đi Xuyên Tường",
