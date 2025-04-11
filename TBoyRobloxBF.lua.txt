@@ -6722,13 +6722,36 @@ local v112 = {};
 for v308, v309 in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(v112, v309.Name);
 end
-v16.Home:AddButton({
-    Title = "Auto Bounty"
-    Description = "null"
-    Callback = function()
-        setclipboard("null");
-end
+local v113 = v16.Player:AddDropdown("SelectedPly", {
+     Title = "Hộp sát thương người chơi",
+     Description = "",
+     Values = v112
+     Multu = false
+     Default = 1
 });
+-- leave a like pls
+
+
+_G.HeadSize = 20
+_G.Disabled = true
+ 
+game:GetService('RunService').RenderStepped:connect(function()
+if _G.Disabled then
+for i,v in next, game:GetService('Players'):GetPlayers() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+v.Character.HumanoidRootPart.Transparency = 0.8
+v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue")
+v.Character.HumanoidRootPart.Material = "Neon"
+v.Character.HumanoidRootPart.CanCollide = false
+end)
+end
+end
+end
+end)
+    end
+}); 
 local v56 = v16.Player:AddSection("Khác");
 local v115 = v16.Player:AddToggle("ToggleNoClip", {
     Title = "Đi Xuyên Tường",
